@@ -127,7 +127,7 @@ class AdminController extends Controller
                 unlink($old_image);
             }
 
-            $image = $request->input('image');
+            $image = $request->file('image');
             $ext = $image->getClientOriginalExtension();
             $imageName = time(). '.'. $ext;
             $image->move(public_path('uploaded_img/'), $imageName);
@@ -142,7 +142,6 @@ class AdminController extends Controller
             'status' => true,
         ]);
 
-        
     }
 
 

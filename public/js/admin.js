@@ -36,9 +36,10 @@
 
     $editBtn.forEach(function(btn) {
         btn.addEventListener('click', function(){
+
             $editFrom.classList.toggle('active');
         });
-    });
+    },);
     
 
 })();

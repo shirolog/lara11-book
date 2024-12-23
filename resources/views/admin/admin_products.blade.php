@@ -42,11 +42,13 @@
         <form id="editFrom"  method="post" enctype="multipart/form-data">
             @csrf
             @method('PUT')
-            <img src="{{asset('uploaded_img/'. $product->image)}}" alt="">
-            <input type="text" name="name" class="box" required 
-            placeholder="enter product name" value="{{old('name', $product->name)}}">
-           <input type="number" name="price" class="box" value="{{old('price', number_format($product->price))}}" placeholder="enter product price" required
-           oninput="if(this.value.length > 2) this.value= this.value.slice(0, 9);" min="0">
+            @if(isset($product))
+                <img src="{{asset('uploaded_img/'. $product->image)}}" alt="">
+                <input type="text" name="name" class="box" required 
+                placeholder="enter product name" value="{{old('name', $product->name)}}">
+                <input type="text" name="price" class="box" value="{{old('price', number_format($product->price))}}" placeholder="enter product price" required
+                oninput="if(this.value.length > 2) this.value= this.value.slice(0, 9);" min="0">
+            @endif
            <input type="file" name="image" class="box" accept="image/png, image/jpeg, image/jpg" id="">
            <input type="submit" value="update" class="btn">
            <input type="reset" value="cancel" class="option-btn" id="close-update">
@@ -93,6 +95,7 @@
             const productId = $(this).data('id');
 
             
+            
             $.ajax({
                 'url': '{{route("admin.admin_products_edit", ":id")}}'.replace(":id", productId),
                 type: 'GET',
@@ -104,7 +107,11 @@
                         $('#editFrom input[name="name"]').val(product.name); // 商品名
                         $('#editFrom input[name="price"]').val(product.price); // 価格
                         $('#editFrom img').attr('src', '{{ asset("uploaded_img") }}/' + product.image); // 画像
-                        $('#editFrom').attr('action', '{{ route("admin.admin_products_update", ":id") }}'.replace(":id", response.product)); // 更新URL
+
+                        // フォームにproductIdを設定
+                        $('#editFrom').data('id', productId);
+
+
                     }
                 }
             })
@@ -118,7 +125,6 @@
             e.preventDefault();
 
             const productId = $(this).data('id'); // モーダルで設定された正しいIDを取得
-            console.log("Submitting Product ID:", productId); // 確認用
 
             const formData = new FormData(this); // フォームデータを取得
 
@@ -133,13 +139,9 @@
                 contentType: false,
                 success: function (response) {
                     if (response.status) {
-                        alert('Product updated successfully!');
                         window.location.reload();
                     }
                 },
-                error: function () {
-                    alert('Failed to update product.');
-                }
             });
         });
 
