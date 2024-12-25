@@ -48,24 +48,33 @@ Route::group(['middleware' => 'admin-check'], function(){
     ->name('admin.admin_products_delete');
     Route::get('/admin_products/{product}', [AdminController::class, 'admin_products_edit'])
     ->name('admin.admin_products_edit');
-    Route::put('/admin_products/{product}', [AdminController::class, 'admin_products_update'])
+    Route::post('/admin_products/{product}', [AdminController::class, 'admin_products_update'])
     ->name('admin.admin_products_update');
+
 
 
 //admin_ordersページに関する記述
     Route::get('/admin_orders', [AdminController::class, 'admin_orders'])
     ->name('admin.admin_orders');
+    Route::put('/admin_orders/{order}', [AdminController::class, 'admin_orders_update'])
+    ->name('admin.admin_orders_update');
+    Route::delete('/admin_orders/{order}', [AdminController::class, 'admin_orders_delete'])
+    ->name('admin.admin_orders_delete');
 
 
     
 //admin_usersページに関する記述
     Route::get('/admin_users', [AdminController::class, 'admin_users'])
     ->name('admin.admin_users');
+    Route::delete('/admin_users/{user}', [AdminController::class, 'admin_users_delete'])
+    ->name('admin.admin_users_delete');
 
 
 //admin_contactsページに関する記述
     Route::get('/admin_contacts', [AdminController::class, 'admin_contacts'])
     ->name('admin.admin_contacts');
+    Route::delete('/admin_contacts/{message}', [AdminController::class, 'admin_contacts_delete'])
+    ->name('admin.admin_contacts_delete');
 
 
 

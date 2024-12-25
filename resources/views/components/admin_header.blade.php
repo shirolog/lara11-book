@@ -7,7 +7,8 @@
             <a href="{{url('/admin_page')}}">home</a>
             <a href="{{url('/admin_products')}}">products</a>
             <a href="{{url('/admin_orders')}}">orders</a>
-            <a href="{{url('/admin_page')}}">messages</a>
+            <a href="{{url('/admin_users')}}">users</a>
+            <a href="{{url('/admin_contacts')}}">messages</a>
         </nav>
 
         <div class="icons">
@@ -18,7 +19,7 @@
         <div class="account-box">
             <p>username : <span>{{Auth::user()->name}}</span></p>
             <p>email : <span>{{Auth::user()->email}}</span></p>
-            <a href="{{route('admin.admin_logout')}}" class="delete-btn" onclick="return confirm('logout from this website?');">logout</a>
+            <a href="{{route('admin.admin_logout')}}" class="logout-btn" onclick="return confirm('logout from this website?');">logout</a>
         </div>
     </div>
 </header>

@@ -36,7 +36,7 @@ class AdminController extends Controller
 //admin_productsページに関する記述
     public function admin_products(){
 
-        $products = Product::orderBy('created_at', 'ASC')->get();
+        $products = Product::orderBy('created_at', 'ASC')->paginate(12);
 
         return view('admin.admin_products', compact('products'));
     }
@@ -116,7 +116,7 @@ class AdminController extends Controller
         }
 
         $product->name = $request->input('name');
-        $product->price =  $request->input('price');
+        $product->price = $request->input('price');
         $product->save();
 
         if(!empty($request->file('image'))){
@@ -127,7 +127,7 @@ class AdminController extends Controller
                 unlink($old_image);
             }
 
-            $image = $request->input('image');
+            $image = $request->file('image');
             $ext = $image->getClientOriginalExtension();
             $imageName = time(). '.'. $ext;
             $image->move(public_path('uploaded_img/'), $imageName);
@@ -151,8 +151,41 @@ class AdminController extends Controller
 //admin_ordersページに関する記述
     public function admin_orders(){
 
+        $orders = Order::orderBy('created_at', 'ASC')->paginate(12);
 
-        return view('admin.admin_orders');
+        return view('admin.admin_orders', compact('orders'));
+    }
+
+
+    public function admin_orders_update(Request $request, Order $order){
+
+        $validator = Validator::make($request->all(), [
+
+            'status' => 'required'
+        ]);
+
+        if($validator->fails()){
+
+            return redirect()->back()->withInput()->withErrors($validator);
+        }
+
+        $order->status = $request->input('status');
+        $order->save();
+
+        return redirect()->back()->with('success', 'Order updated successfully!');
+    }
+
+
+    public function admin_orders_delete(Order $order){
+
+        $order->delete();
+
+        session()->flash('success', 'Order deleted successfully!');
+
+        response()->json([
+
+            'status' => true,
+        ]);
     }
 
 
@@ -160,16 +193,46 @@ class AdminController extends Controller
 //admin_usersページに関する記述
     public function admin_users(){
 
+        $users = User::orderBy('created_at', 'ASC')->paginate(12);
 
-        return view('admin.admin_users');
+
+        return view('admin.admin_users', compact('users'));
     }
+
+
+    public function admin_users_delete(User $user){
+
+        $user->delete();
+
+        session()->flash('success', 'User deleted successfully!');
+
+        return response()->json([
+
+            'status' => true,
+        ]);
+    }
+
 
 
 //admin_contactsページに関する記述
     public function admin_contacts(){
 
+        $messages = Message::orderBy('created_at', 'ASC')->paginate(12);
 
-        return view('admin.admin_contacts');
+        return view('admin.admin_contacts', compact('messages'));
+    }
+
+
+    public function admin_contacts_delete(Message $message){
+
+        $message->delete();
+
+        session()->flash('success', 'Message deleted successfully!');
+
+        return response()->json([
+
+            'status' => true,
+        ]);
     }
 
 
