@@ -45,6 +45,7 @@
     @endif
 
     <div class="edit-product-form">
+     @if($products->isNotEmpty())
         <form id="editFrom"  method="post" enctype="multipart/form-data">
             @csrf
             <img src="{{asset('uploaded_img/'. $product->image)}}" alt="">
@@ -58,6 +59,7 @@
                <input type="reset" value="cancel" class="option-btn" id="close-update">
            </div>
         </form>
+    @endif
     </div>
 
 @endsection
