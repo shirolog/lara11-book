@@ -552,8 +552,6 @@ section{
 
 
 
-
-
 /* media query */
 
 @media screen and (max-width:991px) {
@@ -613,11 +611,7 @@ section{
         font-size: 3rem;
     }
 
-    /* show-products */
-    .show-products .box-container{
-        grid-template-columns: 1fr;
-    }
-
+    
     /* oreders */
 
     .oreders .box-container{
@@ -628,6 +622,11 @@ section{
     /* users */
 
     .users .box-container{
+        grid-template-columns: 1fr;
+    }
+        
+    /* show-products */
+    .show-products .box-container{
         grid-template-columns: 1fr;
     }
 }

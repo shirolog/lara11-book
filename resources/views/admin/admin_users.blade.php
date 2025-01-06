@@ -27,7 +27,7 @@
     @if($users->isNotEmpty())
      <div class="page">
             {!!$users->links()!!}
-        </div>
+    </div>
      @endif
 
 @endsection

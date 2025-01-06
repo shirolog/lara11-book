@@ -23,8 +23,59 @@ Route::post('/login', [UserController::class, 'authenticate'])
 
 Route::group(['middleware' => 'auth'], function(){
 
+//homeページに関する記述
     Route::get('/', [UserController::class, 'home'])
     ->name('user.home');
+    Route::post('/', [UserController::class, 'add_cart'])
+    ->name('user.add_cart');
+
+//aboutページに関する記述
+    Route::get('/about', [UserController::class, 'about'])
+    ->name('user.about');
+
+//shopページに関する記述
+    Route::get('/shop', [UserController::class, 'shop'])
+    ->name('user.shop');
+
+//contactページに関する記述
+    Route::get('/contact', [UserController::class, 'contact'])
+    ->name('user.contact');
+    Route::post('/contact', [UserController::class, 'contact_store'])
+    ->name('user.contact_store');
+
+//cartページに関する記述
+    Route::get('/cart', [UserController::class, 'cart'])
+    ->name('user.cart');
+    Route::put('/cart/{cart}', [UserController::class, 'cart_update'])
+    ->name('user.cart_update');
+    Route::delete('/cart/{cart}', [UserController::class, 'cart_destroy'])
+    ->name('user.cart_destroy');
+    Route::delete('/cart', [UserController::class, 'cart_all_destroy'])
+    ->name('user.cart_all_destroy');
+
+
+//checkoutページに関する記述
+    Route::get('/checkout', [UserController::class, 'checkout'])
+    ->name('user.checkout');
+    Route::post('/checkout', [UserController::class, 'checkout_store'])
+    ->name('user.checkout_store');
+
+
+//ordersページに関する記述
+    Route::get('/orders', [UserController::class, 'orders'])
+    ->name('user.orders');
+
+//search_pageページに関する記述
+    Route::get('/search_page', [UserController::class, 'search_page'])
+    ->name('user.search_page');
+
+
+
+//logout処理に関する記述
+    Route::get('/logout', [UserController::class, 'logout'])
+    ->name('user.logout');
+
+
 });
 
 

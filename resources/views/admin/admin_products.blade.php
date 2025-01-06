@@ -51,7 +51,7 @@
             <img src="{{asset('uploaded_img/'. $product->image)}}" alt="">
             <input type="text" name="name" class="box" required 
             placeholder="enter product name" value="{{old('name', $product->name)}}">
-           <input type="text" name="price" class="box" value="{{old('price', number_format($product->price))}}" placeholder="enter product price" required
+           <input type="text" name="price" class="box" value="{{old('price', $product->price)}}" placeholder="enter product price" required
            oninput="if(this.value.length > 2) this.value= this.value.slice(0, 9);" min="0">
            <input type="file" name="image" class="box" accept="image/png, image/jpeg, image/jpg" id="">
            <div class="flex-btn">

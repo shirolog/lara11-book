@@ -17,4 +17,11 @@ class Cart extends Model
         'quantity',
         'image',
     ];
+
+    //productとのリレーション関係
+
+    public function product(){
+
+        return $this->belongsTo(Product::class);
+    }
 }

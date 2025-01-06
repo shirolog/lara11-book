@@ -21,8 +21,6 @@ class AdminCheck
             return redirect()->route('user.login');
         }
 
-
-
         
         return $next($request);
     }
