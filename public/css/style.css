@@ -181,6 +181,17 @@ section{
     flex-direction: column-reverse;
 }
 
+
+
+.invalid-feedback{
+    font-size: 1.5rem !important;
+    color: var(--red) !important;
+    margin-top: 0 !important;
+    text-align: left !important;
+    display: block !important;
+}
+  
+
 /* header */
 
 .header .header-1{

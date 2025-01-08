@@ -20,8 +20,17 @@
             @csrf
             <h3>register now</h3>
             <input type="text" name="name" class="box" placeholder="enter your name" required>    
+            @error('name')
+                <p class="invalid-feedback">{{$message}}</p>
+            @enderror
             <input type="email" name="email" class="box" placeholder="enter your email" required>    
+            @error('email')
+                <p class="invalid-feedback">{{$message}}</p>
+            @enderror
             <input type="password" name="password" class="box" placeholder="enter your password" required>    
+            @error('password')
+                <p class="invalid-feedback">{{$message}}</p>
+            @enderror
             <input type="password" name="password_confirmation" class="box" placeholder="cofirm your password" required>    
             <input type="submit" class="btn" value="register now">
             <p>already have an account? <a href="{{url('/login')}}">login now</a></p>

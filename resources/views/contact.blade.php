@@ -17,10 +17,22 @@
             @csrf
             <h3>say something!</h3>
             <input type="text" name="name" class="box" required placeholder="enter your name">
+            @error('name')
+                <p class="invalid-feedback">{{$message}}</p>
+            @enderror
             <input type="email" name="email" class="box" required placeholder="enter your email">
+            @error('email')
+                <p class="invalid-feedback">{{$message}}</p>
+            @enderror
             <input type="number" name="number" class="box" required placeholder="enter your number"
             onkeypress="if(this.value.length == 10) return false;">
+            @error('number')
+                <p class="invalid-feedback">{{$message}}</p>
+            @enderror
             <textarea name="message" class="box" placeholder="enter your message" cols="30" rows="10" id=""></textarea>
+            @error('message')
+                <p class="invalid-feedback">{{$message}}</p>
+            @enderror
             <input type="submit" class="btn" value="send message">
         </form>
     </section> 
