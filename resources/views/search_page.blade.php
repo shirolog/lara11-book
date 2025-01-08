@@ -18,10 +18,10 @@
     </section> 
 
     <!-- product section -->
-     <section class="product" style="padding-top: 0;">
+     <section class="products" style="padding-top: 0;">
         <div class="box-container">
             @if($products->isNotEmpty())
-                @foreach($products as $products)
+                @foreach($products as $product)
                 <form action="{{route('user.add_cart')}}" method="post" class="box">
                             @csrf
                             <input type="hidden" name="image" value="{{$product->image}}">
@@ -36,8 +36,18 @@
                         </form>
                 @endforeach
             @else
-                <p class="empty">no search result!</p>
+                @if(request('search'))
+                    <p class="empty">no result found!</p>
+                @else
+                    <p class="empty">search something!</p>
+                @endif
             @endif
         </div>
      </section>
+
+     @if($products->isNotEmpty())
+        <div class="page">
+            {!! $products->appends(['search' => request('search')])->links() !!}
+        </div>
+    @endif
 @endsection

@@ -129,8 +129,6 @@ Route::group(['middleware' => 'admin-check'], function(){
 
 
 
-
-
 //logout処理に関する記述
     Route::get('admin_logout', [AdminController::class, 'admin_logout'])
     ->name('admin.admin_logout');

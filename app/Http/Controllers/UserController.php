@@ -421,12 +421,11 @@ class UserController extends Controller
             $cart_total = 0;
         }
 
-        $serch_box= $request->input('search');
+        $search_box= $request->input('search');
 
-        if(!empty($serch_box)){
+        if(!empty($search_box)){
 
-            $products = Product::where('name', '%'.$serch_box.'%')->paginate(6)->appends(['serch_box' => $serch_box]);
-
+            $products = Product::where('name', 'like', '%'.$search_box.'%')->paginate(1)->appends(['search_box' => $search_box]);
             
         }else{
             $products = collect();
