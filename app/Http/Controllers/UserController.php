@@ -306,7 +306,7 @@ class UserController extends Controller
             $cart_total = 0;
         }
 
-        $carts = Cart::where('user_id', Auth::user()->id)->get();
+        $carts = Cart::where('user_id', Auth::user()->id)->with('product')->get();
 
         $total_price = $carts->sum(function($cart){
             return $cart->price * $cart->quantity;
