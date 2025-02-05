@@ -19,7 +19,7 @@
         <form action="{{route('user.authenticate')}}" method="post">
             @csrf
             <h3>login now</h3>
-            <input type="email" name="email" class="box" placeholder="enter your email" required>    
+            <input type="email" name="email" class="box" placeholder="enter your email" value="{{old('email')}}" required>    
             @error('email')
                 <p class="text-danger">{{$message}}</p>
             @enderror
@@ -27,6 +27,10 @@
             @error('password')
                 <p class="text-danger">{{$message}}</p>
             @enderror
+
+            @if(session('error'))
+                <p class="text-danger">{{ session('error') }}</p>
+            @endif
             <input type="submit" class="btn" value="login now">
             <p>don't have an account? <a href="{{url('/register')}}">register now</a></p>
         </form>

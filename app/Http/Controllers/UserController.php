@@ -390,7 +390,7 @@ class UserController extends Controller
 
         Cart::where('user_id', Auth::user()->id)->delete();
 
-        return redirect()->back()->with('success', 'Order placed successfully!');
+        return redirect()->route('user.orders')->with('success', 'Order placed successfully!');
 
     }
 

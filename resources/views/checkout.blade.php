@@ -70,7 +70,7 @@
 
                 <div class="inputBox">
                     <span>address line 01 :</span>
-                    <input type="number" name="flat" placeholder="e. g. flat no." min="0" required>
+                    <input type="number" name="flat" placeholder="e. g. flat no." min="0" required onkeypress="if(this.value.length == 10) return false">
                     @error('flat')
                         <p class="text-danger">{{$message}}</p>
                     @enderror
@@ -110,8 +110,8 @@
 
                 <div class="inputBox">
                     <span>pincode :</span>
-                    <input type="number" name="pin_code" min="0" placeholder="e. g. 123456" required>
-                    @error('pin-code')
+                    <input type="number" name="pin_code" min="0" placeholder="e. g. 123456" onkeypress="if(this.value.length == 6) return false" required>
+                    @error('pin_code')
                         <p class="text-danger">{{$message}}</p>
                     @enderror
                 </div>

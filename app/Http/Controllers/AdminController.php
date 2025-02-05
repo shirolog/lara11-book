@@ -240,15 +240,15 @@ class AdminController extends Controller
 // admin_logout処理に関する記述
     public function admin_logout(Request $request){
 
-        if(Auth::user()->role == 'admin'){
+        
 
-            Auth::logout();
-    
-            $request->session()->invalidate();
-            $request->session()->regenerateToken();
-    
-            return redirect()->route('user.login');
-        }
+        Auth::logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect()->route('user.login');
+        
     }
 
 }
