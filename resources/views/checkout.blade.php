@@ -37,16 +37,25 @@
                 <div class="inputBox">
                     <span>your name :</span>
                     <input type="text" name="name" placeholder="enter your name" required>
+                    @error('name')
+                        <p class="text-danger">{{$message}}</p>
+                    @enderror
                 </div>
 
                 <div class="inputBox">
                     <span>your number :</span>
                     <input type="number" name="number" placeholder="enter your number" onkeypress="if(this.value.length == 10) return false" required>
+                    @error('number')
+                        <p class="text-danger">{{$message}}</p>
+                    @enderror
                 </div>
 
                 <div class="inputBox">
                     <span>your email :</span>
                     <input type="email" name="email" placeholder="enter your email" required>
+                    @error('email')
+                        <p class="text-danger">{{$message}}</p>
+                    @enderror
                 </div>
 
                 <div class="inputBox">
@@ -62,31 +71,49 @@
                 <div class="inputBox">
                     <span>address line 01 :</span>
                     <input type="number" name="flat" placeholder="e. g. flat no." min="0" required>
+                    @error('flat')
+                        <p class="text-danger">{{$message}}</p>
+                    @enderror
                 </div>
 
                 <div class="inputBox">
                     <span>address line 01 :</span>
                     <input type="text" name="street" placeholder="e. g. street name" min="0" required>
+                    @error('street')
+                        <p class="text-danger">{{$message}}</p>
+                    @enderror
                 </div>
 
                 <div class="inputBox">
                     <span>city :</span>
                     <input type="text" name="city" placeholder="e. g. mumbai" required>
+                    @error('city')
+                        <p class="text-danger">{{$message}}</p>
+                    @enderror
                 </div>
 
                 <div class="inputBox">
                     <span>state :</span>
                     <input type="text" name="state" placeholder="e. g. maharashtra" required>
+                    @error('state')
+                        <p class="text-danger">{{$message}}</p>
+                    @enderror
                 </div>
 
                 <div class="inputBox">
                     <span>country :</span>
                     <input type="text" name="country" placeholder="e. g. india" required>
+                    @error('country')
+                        <p class="text-danger">{{$message}}</p>
+                    @enderror
                 </div>
 
                 <div class="inputBox">
                     <span>pincode :</span>
                     <input type="number" name="pin_code" min="0" placeholder="e. g. 123456" required>
+                    @error('pin-code')
+                        <p class="text-danger">{{$message}}</p>
+                    @enderror
                 </div>
             </div>
             <input type="submit" class="btn" value="order now">

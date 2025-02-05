@@ -26,7 +26,7 @@
 
     @if($users->isNotEmpty())
      <div class="page">
-            {!!$users->links()!!}
+            {!!$users->onEachSide(1)->links()!!}
     </div>
      @endif
 

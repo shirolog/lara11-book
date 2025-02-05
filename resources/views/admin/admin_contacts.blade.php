@@ -28,7 +28,7 @@
     
     @if($messages->isNotEmpty())
      <div class="page">
-            {!!$messages->links()!!}
+            {!!$messages->onEachSide(1)->links()!!}
         </div>
      @endif
 

@@ -49,7 +49,7 @@
 
     @if($carts->isNotEmpty())
         <div class="page">
-            {!!$carts->links()!!}
+            {!!$carts->onEachSide(1)->links()!!}
         </div>
     @endif
 

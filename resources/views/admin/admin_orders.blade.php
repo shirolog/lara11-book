@@ -45,7 +45,7 @@
 
      @if($orders->isNotEmpty())
      <div class="page">
-            {!!$orders->links()!!}
+            {!!$orders->onEachSide(1)->links()!!}
         </div>
      @endif
 

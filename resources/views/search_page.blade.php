@@ -47,7 +47,7 @@
 
      @if($products->isNotEmpty())
         <div class="page">
-            {!! $products->appends(['search' => request('search')])->links() !!}
+            {!! $products->appends(['search' => request('search')])->onEachSide(1)->links() !!}
         </div>
     @endif
 @endsection

@@ -40,7 +40,7 @@
 
     @if($products->isNotEmpty())
         <div class="page">
-            {!!$products->links()!!}
+            {!!$products->onEachSide(1)->links()!!}
         </div>
     @endif
 
